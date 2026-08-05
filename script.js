@@ -55,7 +55,7 @@ renderer.setAnimationLoop(animate);
 
 async function getWeather() {
   try {
-    const weatherstuff = await fetch('http://api.weatherapi.com/v1/current.json?q=%22Los+Angeles%22&key=042b059e3c134377ab7171013260508');
+    const weatherstuff = await fetch('https://api.weatherapi.com/v1/current.json?q=%22Los+Angeles%22&key=042b059e3c134377ab7171013260508');
     const res = await weatherstuff.json();
     const tempf = res["current"].temp_f
     console.log(res);
