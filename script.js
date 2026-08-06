@@ -4,11 +4,18 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@v0.185.1/examples
 const searchbar = document.querySelector("#searchbar");
 const canvas = document.querySelector("#turtlecanvas");
 
+const config = {
+  apikey: "https://api.weatherapi.com/v1/current.json?q=%22Los+Angeles%22&key=042b059e3c134377ab7171013260508",
+  // searchengine: "https://google.com/search"
+  searchengine: "https://duckduckgo.com/",
+  model: "turtle.glb"
+}
+
 document.addEventListener("keypress", function(e) {
   const key = e.key;
   if(key == "Enter" && document.activeElement == searchbar) {
     const query = encodeURIComponent(searchbar.value);
-    window.open(`https://google.com/search?q=${query}`);
+    window.open(config.searchengine + `?q=${query}`);
   }
   if(key == "/" && document.activeElement != searchbar) {
     e.preventDefault();
@@ -34,7 +41,7 @@ renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 let turty;
 
 loader.load(
-  "turtle.glb",
+  config.model,
   function(gltf) {
     turty = gltf.scene;
     scene.add(turty);
@@ -55,7 +62,7 @@ renderer.setAnimationLoop(animate);
 
 async function getWeather() {
   try {
-    const weatherstuff = await fetch('https://api.weatherapi.com/v1/current.json?q=%22Los+Angeles%22&key=042b059e3c134377ab7171013260508');
+    const weatherstuff = await fetch(config.apikey);
     const res = await weatherstuff.json();
     const tempf = res["current"].temp_f
     console.log(res);
