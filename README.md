@@ -1,7 +1,7 @@
 # HOMEPAGE
 Basically a better new tab page because it features an epic spinning turtle in the background.<br>
 It uses Google as a search engine.<br>
-It also has a weather widget which updates every minute<br><br>
+It also has a weather widget (of where I live) which updates every minute<br><br>
 
 Yes I know my api key is right there but I don't really care lol
 <br>
